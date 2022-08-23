@@ -1,8 +1,11 @@
 package PageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 
@@ -85,6 +88,35 @@ public class PersonalInfoPage {
 	 */
 	By btnAcc = By.id("submitAccount");
 	
+	/*
+	 * WOMENS LINK
+	 */
+	By womenLink = By.cssSelector("a.sf-with-ul");
+	
+	
+	/*
+	 * SUBMENU T SHIRTS
+	 */
+	By subMenu = By.xpath("/html/body/div/div[1]/header/div[3]/div/div/div[6]/ul/li[1]/ul/li[1]/ul/li[1]/a");
+	
+	
+	/*
+	 * FIRST ITEM
+	 */
+	By itemsTag = By.tagName("h5");
+	
+	//"button.btn.btn-default.button-search"
+	By searchBar = By.cssSelector("button.btn.btn-default.button-search");
+	
+	
+	//"button.btn.btn-default.button-search"
+	By searchBtn = By.cssSelector("button.btn.btn-default.button-search");
+	
+	public String  text;
+	
+	/*
+	 * COMMON SCENARIOS
+	 */
 	public WebElement getName() {
 		return driver.findElement(name);
 	}
@@ -182,6 +214,40 @@ public class PersonalInfoPage {
 	public WebElement getBtnAccount() {
 		return driver.findElement(btnAcc);
 	}
+	
+	/*
+	 * SUB MENU TSHIRTS METHODS
+	 */
+
+	public void getWomensLink() {
+		Actions action = new Actions(driver);
+		action.moveToElement(driver.findElement(womenLink)).perform();
+	}
+	public WebElement getSubTShirt() {
+		return driver.findElement(subMenu);
+	}
+	
+	public String getItems() {
+		List<WebElement> items = driver.findElements(itemsTag);
+		for(WebElement item : items) {
+			if(item.getText().contains("Faded Short Sleeve T-shirts")) {
+				this.text = item.getText();
+				
+			}
+		}
+			return text;
+	}
+	
+	
+	public WebElement getsearchBar() {
+		return driver.findElement(searchBar);
+	}
+	
+	public WebElement getbtnBar() {
+		return driver.findElement(btnAcc);
+	}
+	
+	
 	
 	
 	

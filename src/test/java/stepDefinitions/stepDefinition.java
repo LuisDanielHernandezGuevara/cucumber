@@ -1,8 +1,22 @@
 package stepDefinitions;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import PageObjects.LandingPage;
@@ -16,15 +30,17 @@ import resources.base;
 //@RunWith(Cucumber.class)
 public class stepDefinition extends base {
 
+	/*
+	 * COMMON SCENARIO STEPS
+	 */
 	@Given("Initialize the browser with chrome")
 	public void initilize_chrome_browser() {
 		 driver =initializeDriver();
 	}
 	
 	@Given("Open the chrome browser and launch the application")
-	public void open_the_chrome_browser_and_launch_the_application() {
-		//driver = new ChromeDriver();
-		//driver.get("https://rahulshettyacademy.com/locatorspractice/");
+	public void open_the_chrome_browser_and_launch_the_application() throws EncryptedDocumentException, IOException {
+		
 		driver.get("http://automationpractice.com/index.php");
 		System.out.println("executed");
 	}
@@ -92,7 +108,6 @@ public class stepDefinition extends base {
 	public void select_a_year_option( ) throws Throwable {
 		PersonalInfoPage pp = new PersonalInfoPage(driver);
 		pp.dropMonths().selectByIndex(0);
-		//pp.dropDays().selectByIndex(0);
 	}
 	
 	@And("Check newsletter option$") 
@@ -192,7 +207,61 @@ public class stepDefinition extends base {
 		    takeScreen("C://Users//1000075142//Documents//SeleniumResults//ErrorBlankFields.png");
 	    }
 	    
+	    /*
+	     * WRONG INFO SENT
+	     */
+	    @Then("^User sends Wrong Information$")
+	    public void user_sends_wrong_information() throws Throwable {
+			PersonalInfoPage pp = new PersonalInfoPage(driver);
+			pp.getBtnAccount().click();
+		    scrollDown(250);
+		    takeScreen( "C://Users//1000075142//Documents//SeleniumResults//WrongInfoError.png");
+	    }
 	    
+	    
+	    
+	    
+	    /*
+	     * SEARCH FEATURE
+	     */
+
+	   
+	    @And("^Hover on Womens link$")
+	    public void hover_on_womens_link() throws Throwable {
+			PersonalInfoPage pp = new PersonalInfoPage(driver);
+			pp.getWomensLink();
+	    }
+
+	    @And("^ClickTShirt Sub Menu$")
+	    public void clicktshirt_sub_menu() throws Throwable {
+			PersonalInfoPage pp = new PersonalInfoPage(driver);
+			pp.getSubTShirt().click();
+	    }
+
+	    @And("^Get Name of displayed Text$")
+	    public void get_name_of_displayed_text() throws Throwable {
+			PersonalInfoPage pp = new PersonalInfoPage(driver);
+			pp.getItems();
+			//Missing step wth test ng
+			//compare result text
+	    	
+	    }
+
+	    @And("^Enter the name on search bar$")
+	    public void enter_the_name_on_search_bar() throws Throwable {
+			PersonalInfoPage pp = new PersonalInfoPage(driver);
+			String text = pp.getItems();
+			pp.getsearchBar().sendKeys(text);
+
+	    }
+	    
+	    @Then("^Click on search Button$")
+	    public void click_on_search_button() throws Throwable {
+			PersonalInfoPage pp = new PersonalInfoPage(driver);
+			pp.getbtnBar();
+			
+	    }
+
 	    
 	
 	

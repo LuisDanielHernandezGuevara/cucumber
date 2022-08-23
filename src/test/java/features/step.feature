@@ -46,15 +46,6 @@ Feature: Title of your feature
     And set "33523523" as a telephone number
     And Set "556677889900" as a mobile number
     Then User sends Account Information
-    
-   @EmailError
-   Scenario: User does not register correct info
-   	Given Initialize the browser with chrome
-    Given Open the chrome browser and launch the application
-    And Clicks on te sign in button
-    And Enter an email with "TestWithoutEmail"
-    And User tries to create an account
-    Then An error message is displayed
 
 		@BlankFieldsInformation
 		Scenario: Leave create account fields in blank
@@ -74,26 +65,27 @@ Feature: Title of your feature
     And Enter an email with "try@mail.com"
     And User tries to create an account
     And Select a gender
-    And Enter a name with "raul"
-    And Enter a lastname with "Sanchez"
-    And Enter "12345" as a password
+    And Enter a name with "123456/."
+    And Enter a lastname with "2423523523"
+    And Enter "1*9?" as a password
     And select a day option
     And select a month option
     And select a year option
     And Check newsletter option
     And Check option birthday
-    And Enter "Hexaware" as company
-    And Enter "WalK Street Avenue" ad address
-    And Enter "Walk Street Aveniue Tousand Franklin" ad address2
-    And Enter "Washington D.C" as a city
+    And Enter "]]][{{)*&%*%" as company
+    And Enter "35234234234*&%%" ad address
+    And Enter "//})jadas423423" ad address2
+    And Enter "}}}[SADASDSAD" as a city
     And Select the dropdown State
-    And Enter "00000" as a postal code
+    And Enter "}}}[SADASDSAD" as a postal code
     And Select dropdown Country
-    And set "33523523" as a telephone number
-    And Set "556677889900" as a mobile number
-    Then An error message blank fields is displayed
+    And set "///})jadas42" as a telephone number
+    And Set "test///}xda" as a mobile number
+    Then User sends Wrong Information
     
-   	
+    
+
    
    # When I complete action
     #And some other action
