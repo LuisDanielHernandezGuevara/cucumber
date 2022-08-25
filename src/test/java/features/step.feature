@@ -26,6 +26,7 @@ Feature: Title of your feature
     Given Open the chrome browser and launch the application
     And Clicks on te sign in button
     And Enter an email with "tes@mymail.com"
+    #And Enter an email
     Then User tries to create an account
     And Select a gender
     And Enter a name with "raul"
@@ -52,7 +53,9 @@ Feature: Title of your feature
 		Given Initialize the browser with chrome
     Given Open the chrome browser and launch the application
     And Clicks on te sign in button
+   # And Enter an email
     And Enter an email with "try@mail.com"
+    
     And User tries to create an account
     Then User sends no Information
     Then An error message blank fields is displayed
@@ -63,6 +66,7 @@ Feature: Title of your feature
     Given Open the chrome browser and launch the application
     And Clicks on te sign in button
     And Enter an email with "try@mail.com"
+    #And Enter an email
     And User tries to create an account
     And Select a gender
     And Enter a name with "123456/."

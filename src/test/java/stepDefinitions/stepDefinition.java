@@ -21,6 +21,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import PageObjects.LandingPage;
 import PageObjects.PersonalInfoPage;
+import PageObjects.ProductPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -40,9 +41,8 @@ public class stepDefinition extends base {
 	
 	@Given("Open the chrome browser and launch the application")
 	public void open_the_chrome_browser_and_launch_the_application() throws EncryptedDocumentException, IOException {
-		
-		driver.get("http://automationpractice.com/index.php");
-		System.out.println("executed");
+				String val = getCells(0,0);
+				driver.get(val);		
 	}
 	
 	@And("Clicks on te sign in button")
@@ -53,10 +53,12 @@ public class stepDefinition extends base {
 	}
 	
 	@And("^Enter an email with \"([^\"]*)\"$")
-	public void enter_and_email(String mail) {
+	//@And("^Enter an email")
+	public void enter_an_email(String email) throws EncryptedDocumentException, IOException {
 		LandingPage lp = new LandingPage(driver);
-		lp.getEmail().sendKeys(mail);
-		System.out.println(mail);
+		//String mail = getCells(1,1);
+		lp.getEmail().sendKeys(email);
+		System.out.println(email);
 	}
 	
 	@Then("^User tries to create an account$")
@@ -261,6 +263,108 @@ public class stepDefinition extends base {
 			pp.getbtnBar();
 			
 	    }
+	    
+	    
+	    /*
+	     * buyProduct
+	     */
+	    
+	    @And("Click on more button")
+	    public void click_more_btn() {
+	    ProductPage pp = new ProductPage(driver) ;
+	    List<WebElement> spans = pp.getbtnMore();
+	  for(WebElement i : spans) {
+		String text = i.getText();
+		if(text.contains("More")) {
+			i.click();
+			break;
+		}
+    }
+	    //pp.getbtnMore();
+	    //String text = pp.getbtnMore().getText();
+	   // if(text.contains("More")) {
+			//pp.getbtnMore().click();
+		//}
+	    }
+	    
+	    @And("Increment items")
+	    public void increment_items() {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getIconIncrement().click();
+		    pp.getIconIncrement().click();
+	    }
+	    
+	    @And("Select size")
+	    public void select_size() {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getSize().selectByIndex(2);
+	    }
+	    
+
+	    @And("^Select orange color$")
+	    public void select_orange_color() throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getColor().click();;
+	    }
+
+	    @And("^Click add to cart button$")
+	    public void click_add_to_cart_button() throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		   List<WebElement> products= pp.getCartBtn();
+		   for(WebElement b: products ) {
+				if(b.getText().equals("Add to cart")) {
+					b.click();
+				}
+			}
+	    }
+	    
+	    @And("Proceed to process payment")
+	    public void click_process() throws Throwable  {
+	    	 ProductPage pp = new ProductPage(driver) ;
+			    pp.getProcess().click();
+			    pp.getProcess2().click();
+	    }
+
+	    @And("^Send \"([^\"]*)\" as an email field$")
+	    public void send_something_as_an_email_field(String email) throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getEmail().sendKeys(email);
+	    }
+
+	    @And("^Send \"([^\"]*)\" as a password field$")
+	    public void send_something_as_a_password_field(String password) throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getPassword().sendKeys(password);
+
+	    }
+
+	    @And("^Click on the submit login button$")
+	    public void click_on_the_submit_login_button() throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getSubmitInfo().click();
+	    }
+
+	    @And("^Click button in process carrier$")
+	    public void click_button_in_process() throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getProcessCarrier();
+	    }
+
+	    @And("^Click on checkbox agreement$")
+	    public void click_on_checkbox_agreement() throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getCheck().click();
+	    }
+
+	    @Then("^Finishes the process$")
+	    public void finishes_the_process() throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		    pp.getLastBtn().click();
+	    }
+
+	    
+	    
+	    
 
 	    
 	

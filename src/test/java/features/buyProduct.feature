@@ -24,7 +24,16 @@ Feature: Buy a product
     Given Open the chrome browser and launch the application
     And Hover on Womens link
     And ClickTShirt Sub Menu
-    And Get Name of displayed Text
-    And Enter the name on search bar
-    Then Click on search Button
+    And Click on more button
+    And Increment items
+    And Select size
+    And Select orange color
+    And Click add to cart button
+    And Proceed to process payment
+    And Send "mymailLuis245@mailSelenium.com" as an email field 
+    And Send "123456" as a password field
+    And Click on the submit login button
+    And Click button in process carrier
+    And Click on checkbox agreement
+    Then Finishes the process
     
