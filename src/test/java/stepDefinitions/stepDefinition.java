@@ -280,12 +280,9 @@ public class stepDefinition extends base {
 			break;
 		}
     }
-	    //pp.getbtnMore();
-	    //String text = pp.getbtnMore().getText();
-	   // if(text.contains("More")) {
-			//pp.getbtnMore().click();
-		//}
+	  
 	    }
+	    
 	    
 	    @And("Increment items")
 	    public void increment_items() {
@@ -344,7 +341,7 @@ public class stepDefinition extends base {
 		    pp.getSubmitInfo().click();
 	    }
 
-	    @And("^Click button in process carrier$")
+	    @And("^Click button in process address$")
 	    public void click_button_in_process() throws Throwable {
 		    ProductPage pp = new ProductPage(driver) ;
 		    pp.getProcessCarrier();

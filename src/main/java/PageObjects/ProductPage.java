@@ -76,7 +76,7 @@ public class ProductPage {
 	/*
 	 * process carrier button
 	 */
-	By processCarrier = By.name("processCarrier");
+	By processAddress = By.name("processAddress");
 	
 	/*
 	 * bankwire button
@@ -154,7 +154,7 @@ public class ProductPage {
 	}
 	
 	public WebElement getProcessCarrier() {
-		return driver.findElement(processCarrier);
+		return driver.findElement(processAddress);
 	}
 	
 	public WebElement getbankwire() {
