@@ -11,3 +11,5 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(features="src/test/java/features", 
 glue= {"stepDefinitions"} ,tags="@BuyProduct")
 public class Runner {}
+//public class Runner extends AbstractTestNGCucumberTests  {}
+

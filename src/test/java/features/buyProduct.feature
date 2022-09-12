@@ -33,7 +33,10 @@ Feature: Buy a product
     And Send "mymailLuis245@mailSelenium.com" as an email field 
     And Send "123456" as a password field
     And Click on the submit login button
-    And Click button in process address
+        And Click button in process address
     And Click on checkbox agreement
-    Then Finishes the process
+    And Click process carrier button
+    And Click on bankwire button
+    Then Confirm order button
+    Then Take screenshot
     

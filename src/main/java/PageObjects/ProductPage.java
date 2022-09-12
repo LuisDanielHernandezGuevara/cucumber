@@ -67,27 +67,29 @@ public class ProductPage {
 	 * Process button
 	 */
 	By procBtn = By.cssSelector("button.button.btn.btn-default.button-medium");
+
+	/*
+	 * process Address button
+	 */
+	By processAddress = By.name("processAddress");
+	
 	
 	/*
 	 * checkbox agreement
 	 */
-	By checkAgree = By.id("cgv");
-	
-	/*
-	 * process carrier button
-	 */
-	By processAddress = By.name("processAddress");
+	By checkAgree = By.name("cgv");
 	
 	/*
 	 * bankwire button
 	 */
-	By bankwire = By.className("bankwire");
+	//By bankwire = By.tagName("p");
 	
+	By bankwire = By.className("bankwire");
 	/*
 	 * Last tbutton
 	 */
 	
-	By lastBtn = By.cssSelector("button.button.btn.btn-default.button-medium");
+	By confirmOrder = By.tagName("span");
 	
 	public ProductPage(WebDriver driver) {
 		this.driver = driver;
@@ -96,14 +98,6 @@ public class ProductPage {
 	
 	public List<WebElement> getbtnMore() {
 		List<WebElement> spans = driver.findElements(btnMore);
-		//for(WebElement i : spans) {
-			//String text = i.getText();
-			//if(text.contains("More")) {
-				//i.click();
-				//break;
-			//}
-			//return i;
-	   // }
 		return  spans;
 	}
 	
@@ -148,20 +142,19 @@ public class ProductPage {
 	public WebElement getProcessBtn() {
 		return driver.findElement(procBtn);
 	}
-	
+
+	public WebElement getProcessAddress() {
+		return driver.findElement(processAddress);
+	}
 	public WebElement getCheck() {
 		return driver.findElement(checkAgree);
-	}
-	
-	public WebElement getProcessCarrier() {
-		return driver.findElement(processAddress);
 	}
 	
 	public WebElement getbankwire() {
 		return driver.findElement(bankwire);
 	}
 	
-	public WebElement getLastBtn() {
-		return driver.findElement(lastBtn);
+	public List<WebElement> confirmOrderButton() {
+		return driver.findElements(confirmOrder);
 	}
 }

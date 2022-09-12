@@ -335,37 +335,73 @@ public class stepDefinition extends base {
 
 	    }
 
+	    /*
+	     * Sends login info
+	     */
 	    @And("^Click on the submit login button$")
 	    public void click_on_the_submit_login_button() throws Throwable {
 		    ProductPage pp = new ProductPage(driver) ;
 		    pp.getSubmitInfo().click();
 	    }
-
+	    
+/*
+ * Address step
+ */
+	   
 	    @And("^Click button in process address$")
 	    public void click_button_in_process() throws Throwable {
 		    ProductPage pp = new ProductPage(driver) ;
-		    pp.getProcessCarrier();
+		    pp.getProcessAddress().click();
 	    }
 
+	    /*
+	     * Shipping step
+	     */
 	    @And("^Click on checkbox agreement$")
 	    public void click_on_checkbox_agreement() throws Throwable {
 		    ProductPage pp = new ProductPage(driver) ;
 		    pp.getCheck().click();
 	    }
-
-	    @Then("^Finishes the process$")
-	    public void finishes_the_process() throws Throwable {
+	    
+	    /*
+	     * Shipping step
+	     */
+	    @And("^Click process carrier button$")
+	    public void click_process_carrier_button() throws Throwable {
 		    ProductPage pp = new ProductPage(driver) ;
-		    pp.getLastBtn().click();
+		    pp.getProcessBtn().click();
 	    }
+	    
+	    /*
+	     * Payment step bankwire button
+	     */
+	    @And("^Click on bankwire button$")
+		   public void click_on_bankwire_button() throws Throwable{
+			   ProductPage pp = new ProductPage(driver) ;
+			   pp.getbankwire().click();
+		   }
 
 	    
+	    /*
+	     * Payment step Confirm order button
+	     */
+	    @Then("^Confirm order button$")
+	    public void confirm_order_btn() throws Throwable {
+		    ProductPage pp = new ProductPage(driver) ;
+		   List<WebElement> buttons = pp.confirmOrderButton();
+		   for(WebElement button: buttons) {
+			   if(button.getText().equals("I confirm my order")) {
+				   button.click();
+				   //Thread.sleep(30000);
+				   break;
+			   }
+		   }
+	    }
 	    
-	    
-
-	    
-	
-	
-	
-
+	    @Then("^Take screenshot$")
+	    public void take_screenshot()throws Throwable {
+	    	ProductPage pp = new ProductPage(driver);
+	    	  scrollDown(250);
+			  takeScreen( "C://Users//1000075142//Documents//SeleniumResults//buyFeature.png");	   
+	    }
 }
